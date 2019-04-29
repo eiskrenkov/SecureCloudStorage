@@ -1,0 +1,13 @@
+.container
+  .card
+    h5.card-header Upload New Image
+    .card-body
+      = simple_form_for Upload.new do |f|
+        = f.input :name, placeholder: 'Upload name'
+        = f.input :image, direct_upload: true
+
+        = f.submit 'Upload', class: 'btn btn-primary'
+
+  hr
+
+  = render 'user_uploads'

@@ -1,0 +1,11 @@
+en:
+  app:
+    name: Secure Cloud Storage
+  login:
+    button: Login
+    prompt: Login to upload your photos th the secured storage
+    not_registered: Do not have an account?
+  register:
+    button: Register
+    prompt: Create an account to upload your photos to the secured storage
+    already_registered: Already have an account?

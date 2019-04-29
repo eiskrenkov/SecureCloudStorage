@@ -1,0 +1,27 @@
+.container id='devise'
+  .card.card-background
+    h2 = t('app.name')
+    p = t('login.prompt')
+
+    = login_form do |f|
+      .form-group
+        = f.label :email
+        = f.email_field :email, placeholder: 'Email', 
+                                class: 'form-control form-background',
+                                autocomplete: :email
+
+      .form-group
+        = f.label :password
+        = f.password_field :password, placeholder: 'Password',
+                                      class: 'form-control form-background',
+                                      autocomplete: :password
+
+      br
+
+      p = alert
+
+      .text-center
+        = submit_tag t('login.button'), class: 'btn btn-primary btn-lg'
+
+    .text-center
+      = link_to t('login.not_registered'), new_user_registration_path

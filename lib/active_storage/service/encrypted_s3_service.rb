@@ -1,13 +1,11 @@
 require 'active_storage/service/s3_service'
-require 'openssl'
 
-module ActiveStorage
+module ActiveStorage # rubocop:disable Style/ClassAndModuleChildren
   class Service::EncryptedS3Service < Service::S3Service
     attr_reader :encryption_client
 
     def initialize(bucket:, upload: {}, **options)
-      options[:encryption_key] = OpenSSL::PKey::RSA.new(1024)
-      super(bucket: bucket, upload: upload, **options.except(:encryption_key))
+      super(bucket: bucket, upload: upload, **options.except(:kms_key_id))
       @encryption_client = Aws::S3::Encryption::Client.new(options)
     end
 
@@ -33,7 +31,7 @@ module ActiveStorage
         encryption_client.get_object(
           bucket: bucket.name,
           key: key
-        ).body.string.force_encoding(Encoding::BINARY)
+        ).body
       end
     end
 

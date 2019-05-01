@@ -1,13 +1,16 @@
 .container
   .card
-    h5.card-header Upload New Image
+    h5.card-header = t('upload.title')
     .card-body
       = simple_form_for Upload.new do |f|
-        = f.input :name, placeholder: 'Upload name'
+        = f.input :name
         = f.input :image, direct_upload: true
 
-        = f.submit 'Upload', class: 'btn btn-primary'
+        = f.submit t('upload.submit'), class: 'btn btn-primary btn-block'
 
+.images-container
   hr
+  - if @uploads.present?
+    .row
+      = render @uploads.reverse_order
 
-  = render 'user_uploads'

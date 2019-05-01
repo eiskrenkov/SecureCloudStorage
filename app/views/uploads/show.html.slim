@@ -1,0 +1,9 @@
+.container
+  .card
+    .card-body
+      h2.card-title = @upload.name
+      h5.card-subtitle = upload_original_name(@upload)
+
+      hr
+
+      = image_tag show_image_upload_path(@upload), class: 'card-img-top'

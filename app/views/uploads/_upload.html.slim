@@ -1,0 +1,12 @@
+.col-md-3
+  .card
+    h5.card-header
+      = "##{upload.id} - "
+      = link_to upload.name, upload_path(upload)
+
+    = image_tag show_image_upload_path(upload), class: 'card-img-top'
+
+    .card-footer.text-muted
+      = "Uploaded #{time_ago_in_words(upload.created_at)} ago"
+      = link_to 'Delete', upload_path(upload), method: :delete, class: 'text-danger pull-right'
+  br
